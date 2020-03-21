@@ -36,12 +36,20 @@ https://angularjs.org/
 	you can think module as a main method in other type of application.
 	
 	How to create a module:
-							Use the angular objects module method to create module.
-							ex: var myapp = angular.module("MyModuleName", [dependencylist])
-							a module can depend on another module also. if a module is not depend on any other module
-							keep second parameter empty.
+		Use the angular objects module method to create module.
+		ex: var myapp = angular.module("MyModuleName", [dependencylist])
+		a module can depend on another module also. if a module is not depend on any other module
+		keep second parameter empty.
 							
 	Controller: In angular controller is a javascript function. The job of controller is to build a model for view to display.
-	a controller may call webservice
-							
+	a controller may call webservice to retrive data from database. 
+
+	How to create controller in angular:
+	var mtController = function($scope) {
+	$scope.message = "AngularJS tutorial"; // here we are attaching message property to scope object.
+	}
+
+## $scope: This is angular object which is passed to controller function automatically. we attach the modal to $scope object which will be accessible
+			in view.
+ 
 	
