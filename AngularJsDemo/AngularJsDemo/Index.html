@@ -2,14 +2,23 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular.js"></script> <!--use this for redable error in console-->
+    <!--<script src="Scripts/angular.min.js"></script>--> <!--use this for production-->
     <script src="Scripts/Script.js"></script>
     <title></title>
 </head>
 <body ng-app="myModule">
 
     <div ng-controller="myController">
-        {{messgae}}
+        <div>
+            FirstName : {{employee.FirstName}}
+        </div>
+        <div>
+            LastName : {{employee.LastName}}
+        </div>
+        <div>
+            Gender : {{employee.Gender}}
+        </div>
     </div>
 
     <div>

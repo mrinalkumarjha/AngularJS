@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Index.html" />
     <Content Include="Readme.txt" />
+    <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\Script.js" />
     <Content Include="Web.config" />
