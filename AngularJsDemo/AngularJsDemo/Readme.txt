@@ -54,7 +54,10 @@ https://angularjs.org/
  
 5: ng src directive:
 					Using binding expression with the image src attribute result in 404 error. Image will display but 404 error will display
-					in network tab. Reason for 404 error is binding expression. At the time of dom parsing binding expression are not available.
+					in network tab. Reason for 404 error is binding expression. At the time of dom parsing request 
+					 is issued for image and binding expression are not available at this point.
 					so 404 error comes. but how image are available in browser. this is happened by second request after binding expression available.
 					so 2 request made for single image. 
-					To solve this we use ng src directive.
+					To solve this we use ng src directive. ng src directive ensures that only req is made after binding expression is available.
+					So by ng src no 404 error will come and only one request will be created.
+

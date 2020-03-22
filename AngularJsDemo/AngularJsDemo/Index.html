@@ -23,7 +23,8 @@
         <!--using image-->
         <div>
             <!--Using binding expression with the image src attribute result in 404 error.-->
-            <img src="{{employee.ImageUrl}}" alt="{{employee.FirstName}}" style="height:100px; width:200px;" />
+            <!--<img src="{{employee.ImageUrl}}" alt="{{employee.FirstName}}" style="height:100px; width:200px;" />-->
+            <img ng-src="{{employee.ImageUrl}}" alt="{{employee.FirstName}}" style="height:100px; width:200px;" />
         </div>
     </div>
 
