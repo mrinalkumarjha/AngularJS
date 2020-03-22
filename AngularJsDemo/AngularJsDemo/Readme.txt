@@ -52,4 +52,9 @@ https://angularjs.org/
 ## $scope: This is angular object which is passed to controller function automatically. we attach the modal to $scope object which will be accessible
 			in view.
  
-	
+5: ng src directive:
+					Using binding expression with the image src attribute result in 404 error. Image will display but 404 error will display
+					in network tab. Reason for 404 error is binding expression. At the time of dom parsing binding expression are not available.
+					so 404 error comes. but how image are available in browser. this is happened by second request after binding expression available.
+					so 2 request made for single image. 
+					To solve this we use ng src directive.

@@ -19,6 +19,12 @@
         <div>
             Gender : {{employee.Gender}}
         </div>
+
+        <!--using image-->
+        <div>
+            <!--Using binding expression with the image src attribute result in 404 error.-->
+            <img src="{{employee.ImageUrl}}" alt="{{employee.FirstName}}" style="height:100px; width:200px;" />
+        </div>
     </div>
 
     <div>
@@ -28,6 +34,8 @@
     <div>
         10 + 50 = {{10+50}}
     </div>
+
+   
 
 </body>
 </html>

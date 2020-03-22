@@ -33,7 +33,8 @@ var myapp = angular
         var employee = {
             FirstName: 'David',
             LastName: 'hasting',
-            Gender: 'Male'
+            Gender: 'Male',
+            ImageUrl:'Images/sample.jpg'
 
         }
         $scope.employee = employee;
