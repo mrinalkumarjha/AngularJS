@@ -37,6 +37,9 @@ var myapp = angular
             ImageUrl:'Images/sample.jpg'
 
         }
+        
         $scope.employee = employee;
+        $scope.message = "Hello Angular";
+       
     });
     

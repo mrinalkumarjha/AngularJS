@@ -10,14 +10,53 @@
 <body ng-app="myModule">
 
     <div ng-controller="myController">
+
         <div>
-            FirstName : {{employee.FirstName}}
+            <input type="text" ng-model="message" />
+            Message : {{message}}
         </div>
+
         <div>
-            LastName : {{employee.LastName}}
-        </div>
-        <div>
-            Gender : {{employee.Gender}}
+            <table>
+                <tr>
+                    <td>FirstName</td>
+                    <td>
+                        <input type="text" ng-model="employee.FirstName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>LastName</td>
+                    <td>
+                        <input type="text" ng-model="employee.LastName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        <input type="text" ng-model="employee.Gender" />
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>FirstName</td>
+                    <td>
+                        {{employee.FirstName}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>LastName</td>
+                    <td>
+                        {{employee.LastName}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        {{employee.Gender}}
+                    </td>
+                </tr>
+            </table>
         </div>
 
         <!--using image-->

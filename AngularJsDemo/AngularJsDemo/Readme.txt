@@ -61,3 +61,14 @@ https://angularjs.org/
 					To solve this we use ng src directive. ng src directive ensures that only req is made after binding expression is available.
 					So by ng src no 404 error will come and only one request will be created.
 
+
+6: Two way data binding in angularjs:
+					Two way databinding keeps model and view in sync all the time. that is change in model update view and vice versa.
+					we achive two way binding using ng-model directive. ng-model directive can be used with input, select and text area.
+					
+					IN UI:
+					 <input type="text" ng-model="message" />
+					 Message : {{message}}
+
+					 IN CONTROLLER: $scope.message = "Hello Angular";
+
