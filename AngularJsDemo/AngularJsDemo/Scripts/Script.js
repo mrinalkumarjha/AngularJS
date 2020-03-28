@@ -36,8 +36,26 @@ var myapp = angular
             { FirstName: "preety", LastName: "jha", Gender: "Male", Salary: 10860},
             { FirstName: "jintrsh", LastName: "jha", Gender: "Male", Salary: 18500 }
         ]
+
+        var technologies = [
+            { name: "c#", likes: 0, dislike: 0 },
+            { name: "ASP", likes: 0, dislike: 0 },
+            { name: "SQL", likes: 0, dislike: 0 },
+            { name: "SQL", likes: 0, dislike: 0 }
+        ]
         
         $scope.employees = employees;
+
+        $scope.technologies = technologies;
+
+        $scope.techlike = function (tech) {
+            tech.likes++;
+        }
+
+        $scope.techdislike = function (tech) {
+            tech.dislike++;
+        }
+
 
 
 

@@ -32,6 +32,30 @@
             </tbody>
         </table>
 
+        <table>
+            <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>name</th>
+                    <th>likes</th>
+                    <th>dislike</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="tech in technologies">
+                    <td>{{$index}}</td>
+                    <td>{{tech.name}}</td>
+                    <td>{{tech.likes}}</td>
+                    <td>{{tech.dislike}}</td>
+                    <td>
+                        <input type="button" value="Like" ng-click="techlike(tech)" />
+                        <input type="button" value="Dislike" ng-click="techdislike(tech)"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
     </div>
 
    

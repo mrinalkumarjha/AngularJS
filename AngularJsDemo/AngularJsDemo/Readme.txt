@@ -94,3 +94,7 @@ https://angularjs.org/
                     <td>{{employee.Salary}}</td>
                 </tr>
 
+
+8: Handling event in angularjs: we use ng-click directive to handle clicks.
+						 <input type="button" value="Like" ng-click="techlike(tech)" />
+					
