@@ -72,3 +72,25 @@ https://angularjs.org/
 
 					 IN CONTROLLER: $scope.message = "Hello Angular";
 
+7: AngularJS ng repeat directive:
+					ng-repeat is simar to foreach in c#.  we use this directive to show list in ui. We use $index property to find index of item
+
+					in controller :
+									 var employees = [
+							{ FirstName: "David", LastName: "hasting", Gender: "Male", Salary: 9000},
+							{ FirstName: "mrinal", LastName: "jha", Gender: "Male", Salary: 8000 },
+							{ FirstName: "preety", LastName: "jha", Gender: "Male", Salary: 10860},
+							{ FirstName: "jintrsh", LastName: "jha", Gender: "Male", Salary: 18500 }
+						]
+        
+						$scope.employees = employees;
+					
+					IN UI:
+							 <tr ng-repeat="employee in employees">
+							 <td>{{$index}}</td>
+                    <td>{{employee.FirstName}}</td>
+                    <td>{{employee.LastName}}</td>
+                    <td>{{employee.Gender}}</td>
+                    <td>{{employee.Salary}}</td>
+                </tr>
+

@@ -9,70 +9,29 @@
 </head>
 <body ng-app="myModule">
 
+    <!-- Using ng-repeat -->
     <div ng-controller="myController">
+        <table>
+            <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>FirstName</th>
+                    <th>LastNAme</th>
+                    <th>Gender</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in employees">
+                    <td>{{$index}}</td>
+                    <td>{{employee.FirstName}}</td>
+                    <td>{{employee.LastName}}</td>
+                    <td>{{employee.Gender}}</td>
+                    <td>{{employee.Salary}}</td>
+                </tr>
+            </tbody>
+        </table>
 
-        <div>
-            <input type="text" ng-model="message" />
-            Message : {{message}}
-        </div>
-
-        <div>
-            <table>
-                <tr>
-                    <td>FirstName</td>
-                    <td>
-                        <input type="text" ng-model="employee.FirstName" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>LastName</td>
-                    <td>
-                        <input type="text" ng-model="employee.LastName" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Gender</td>
-                    <td>
-                        <input type="text" ng-model="employee.Gender" />
-                    </td>
-                </tr>
-            </table>
-            <table>
-                <tr>
-                    <td>FirstName</td>
-                    <td>
-                        {{employee.FirstName}}
-                    </td>
-                </tr>
-                <tr>
-                    <td>LastName</td>
-                    <td>
-                        {{employee.LastName}}
-                    </td>
-                </tr>
-                <tr>
-                    <td>Gender</td>
-                    <td>
-                        {{employee.Gender}}
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <!--using image-->
-        <div>
-            <!--Using binding expression with the image src attribute result in 404 error.-->
-            <!--<img src="{{employee.ImageUrl}}" alt="{{employee.FirstName}}" style="height:100px; width:200px;" />-->
-            <img ng-src="{{employee.ImageUrl}}" alt="{{employee.FirstName}}" style="height:100px; width:200px;" />
-        </div>
-    </div>
-
-    <div>
-        10 + 20 = {{10+20}}
-    </div>
-
-    <div>
-        10 + 50 = {{10+50}}
     </div>
 
    

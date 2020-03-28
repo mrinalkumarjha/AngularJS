@@ -11,9 +11,9 @@
 //// then we need to associate this controller with ng-controller directive, and we do that in view.
 //var myController = function ($scope) {
 //    var employee = {
-//        FirstName: 'David',
-//        LastName: 'hasting',
-//        Gender: 'Male'
+//        FirstName: "David",
+//        LastName: "hasting",
+//        Gender: "Male"
 
 //    }
 //    $scope.employee = employee;
@@ -30,16 +30,17 @@ var myapp = angular
     .module("myModule", [])
     .controller("myController", function ($scope) {
 
-        var employee = {
-            FirstName: 'David',
-            LastName: 'hasting',
-            Gender: 'Male',
-            ImageUrl:'Images/sample.jpg'
-
-        }
+        var employees = [
+            { FirstName: "David", LastName: "hasting", Gender: "Male", Salary: 9000},
+            { FirstName: "mrinal", LastName: "jha", Gender: "Male", Salary: 8000 },
+            { FirstName: "preety", LastName: "jha", Gender: "Male", Salary: 10860},
+            { FirstName: "jintrsh", LastName: "jha", Gender: "Male", Salary: 18500 }
+        ]
         
-        $scope.employee = employee;
-        $scope.message = "Hello Angular";
+        $scope.employees = employees;
+
+
+
        
     });
     
