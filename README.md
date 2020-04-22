@@ -1,16 +1,54 @@
 # AngularJS
 
+AngularJs is binding framework used to bind javascript objects to html UI. In simple word it is a binding framework. angularjs took birth inside google in 2009.
+it was developed by two developer Misko Hevery and Adam Abrons.
 
 To build angularjs application we need only one file (angular.js) . To get the script file visit angularjs.org
 https://angularjs.org/
 
+# Why angular? What does binding framework mean ?
+  
+  In traditional javascript app, developer used to bind ui to object and vice versa like below.
+  
+   // in javascript there is no concept of class . function is treated as class.
+        function Customer() {
+            this.CustomerName = "mrinal";
+            this.CustomerCode = "C001";
+        }
+
+        var custObj = new Customer();
+
+        function UiToObject() {
+            custObj.CustomerName = document.getElementById('CustomerName').value;
+            custObj.CustomerCode = document.getElementById('CustomerCode').value;
+        }
+
+        function ObjectToUi() {
+            document.getElementById('divCustomerName').innerHTML = custObj.CustomerName;
+            document.getElementById('divCustomerCode').innerHTML = custObj.CustomerCode;
+        }
+		
+		But as angular is binding framework angular help us to bind ui to object by minimum code like this.. We can see how binding code has been simplified.
+		<!-- ng-controller="Customer" means var custObj = new Customer(); -->
+        <div id="CustScreen" ng-controller="Customer"> <!-- it create new instance of Customer -->
+        Customer Name :- <input type="text" ng-model="CustomerName" id="CustomerName" /> <br />
+        Customer Code :- <input type="text" ng-model="CustomerCode" id="CustomerCode" />
+		
+# Why angular tag is combination with - .
+
+	html says if you dont want to collied with my tag so use - in your custom tag. when you define tag using - browser does not parse it as html . so any framework like angular
+	knockout use -(hiphen) so that they donot clash with html.
+
 # CDN LINK FOR ANGULARJS : https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js
+
+# Tools important for angularjs
+   1: AngularJS Batarang : for debugging value
 
 # step to use angularjs in application
 	1: add reference of your angularjs script file
 	2: add ng-app attribute somewhere in html. ng-app is directive. it is a starting point of angularjs application.
 	if we add ng-app in one div element so everything inside that div will be managed by angular now. if we add ng-app
-	in body then angular is responsible for handling all element expression inside body.
+	in body then angular is responsible for handling all element expression inside body. Angular internally creates $rootscope for ng-app in dom.
 	
 	Ex: 
 	
@@ -53,7 +91,7 @@ https://angularjs.org/
 	}
 
 ## $scope: This is angular object which is passed to controller function automatically. we attach the modal to $scope object which will be accessible
-			in view.
+			in view. $scope  is service. whatever you see with $ is angular readymade services.
  
 # ng src directive:
 					Using binding expression with the image src attribute result in 404 error. Image will display but 404 error will display
@@ -100,4 +138,12 @@ https://angularjs.org/
 
 # Handling event in angularjs: we use ng-click directive to handle clicks.
 						 <input type="button" value="Like" ng-click="techlike(tech)" />
+						 
+# In javascript there is no concept of class . function is treated as class.
+        function Customer() {
+            this.CustomerName = "mrinal";
+            this.CustomerCode = "C001";
+        }
+		// Object creation
+        var custObj = new Customer();
 					
