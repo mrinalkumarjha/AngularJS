@@ -147,3 +147,9 @@ https://angularjs.org/
 		// Object creation
         var custObj = new Customer();
 					
+# Angularjs Digest cycle.
+	when we see updated model value in expression {{name}} it happens due to angular digest cycle. whenever there are any changes in model there are some kind
+	of event raised by model internally and it starts digest cycle. digest cycle search all watcher connected to model. it trigger watcher and watcher
+	says about particular expression which need to be updated.
+	
+	whenever there are change in model, $.apply() method called and it start digest cycle with $.digest() method.
