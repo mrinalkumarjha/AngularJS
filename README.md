@@ -152,4 +152,29 @@ https://angularjs.org/
 	of event raised by model internally and it starts digest cycle. digest cycle search all watcher connected to model. it trigger watcher and watcher
 	says about particular expression which need to be updated.
 	
-	whenever there are change in model, $.apply() method called and it start digest cycle with $.digest() method.
+	whenever there are change in model, $.apply() method called and it start digest cycle with $.digest() method. Watcher runs each time when we update textbox.
+	
+	When we type something in textbox it simply compare value with old value and if value is same from last one it does not fire digest cycle.
+	
+	normally each model and expression has a watcher associated with it. so no of field increase watcher increase and cause performance impact. so we need to eliminate watcher by
+	applying :: for one time data which dont need to be updated on dom after loading.
+	ex: {{::SalesDateTime}}
+	for a property which is readonly field in ui just add :: before it. so what will happened is on very first load one watcher will be attached to it but for subsequent digest cycle
+	no watcher will be attached to this one time property.
+	
+	> custome watcher. it is used when we add watch on variable
+	
+	// custom watcher
+            $scope.$watch(`CustomerAmount`, function () {
+                if ($scope.CustomerAmount > 100) {
+                    $scope.CustomerAmountColor = `Green`;
+                }
+                else {
+                    $scope.CustomerAmountColor = `Blue`;
+                }
+
+            })
+
+
+	
+	

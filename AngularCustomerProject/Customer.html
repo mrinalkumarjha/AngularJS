@@ -8,10 +8,26 @@
     <script>
         // in javascript there is no concept of class . function is treated as class.
         function Customer($scope, $rootScope) {
-            debugger;
-            $rootScope.counter = (($rootScope.counter || 0) + 1)
+            //debugger;
+            //$rootScope.counter = (($rootScope.counter || 0) + 1);
+            var dt = new Date();
+            $scope.SalesDateTime = dt.toDateString();
             $scope.CustomerName = "mrinal";
             $scope.CustomerCode = "C001";
+            $scope.CustomerAmount = 100;
+            $scope.CustomerAmountColor = `Red`;
+
+            // custom watcher
+            $scope.$watch(`CustomerAmount`, function () {
+                if ($scope.CustomerAmount > 100) {
+                    $scope.CustomerAmountColor = `Green`;
+                }
+                else {
+                    $scope.CustomerAmountColor = `Blue`;
+                }
+
+            })
+
 
             // creating method inside class customer
             $scope.submit = function () {
@@ -23,6 +39,8 @@
                     alert('submitting..');
                 }
             }
+
+
         }
 
 
@@ -51,16 +69,20 @@
 <!-- Angular internally creates $rootscope for ng-app in dom. -->
 <body ng-app="MyApp">
 
-    {{counter}}
+   <!-- {{counter}}-->
 
     <!-- ng-controller="Customer" means var custObj = new Customer(); -->
     <!-- Angular internally creates $scope for ng-controller in dom. -->
     <div id="CustScreen" ng-controller="CustomerObj">
         <!-- it create new instance of Customer -->
+        Date and Time of sales :- {{::SalesDateTime}}<br />
         Customer Name :- <input type="text" ng-model="CustomerName" id="CustomerName" /> <br />
-        Customer Code :- <input type="text" ng-model="CustomerCode" id="CustomerCode" />
+        Customer Code :- <input type="text" ng-model="CustomerCode" id="CustomerCode" /> <br />
+        Customer Amount :- <input type="text" style="background-color:{{CustomerAmountColor}}" ng-model="CustomerAmount" id="CustomerAmount" />
         <input type="button" value="Submit" ng-click="submit()" />
         <br />
+        {{::SalesDateTime}}<br />
+
         {{CustomerName}}<br />
         {{CustomerCode}}<br />
     </div>
