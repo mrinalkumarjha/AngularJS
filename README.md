@@ -162,7 +162,7 @@ https://angularjs.org/
 	for a property which is readonly field in ui just add :: before it. so what will happened is on very first load one watcher will be attached to it but for subsequent digest cycle
 	no watcher will be attached to this one time property.
 	
-	> custome watcher. it is used when we add watch on variable
+	> custome watcher. it is used when we add watch on variable.
 	
 	// custom watcher
             $scope.$watch(`CustomerAmount`, function () {
@@ -176,5 +176,24 @@ https://angularjs.org/
             })
 
 
+# Service and factory:
+	In angular basically there are three component , first html which is ui, second modal for object and third one is binding code used to bind model to ui. so we should keep
+	all three layer seperately so that in future we can easily replace any binding framework like angular. for example before some time knockout were used as binding framework,now
+	angular is being used so after some time suppose some other framework comes then if we create loosly coupled architecture we can easily replace any binding framework.
 	
+	// service is way we can create global object and any class can inject it. here single instance will be injected to client injector. this is similar to singalton in c#.
+	// we will use service for infrastructure class like utility.
+	
+	 var myApp = angular.module("MyApp", []);
+        myApp.controller("BindingCode", BindingCode); // here we are registering it as CustomerObj
+        myApp.service(`CustomerObj`, Customer);  // here we are adding CustomerObj as object of Customer . now it can be injected in any class.
+		
+   // If we want different different instance to be created we will use factory method. this is similar to factory pattern.
+   // we use factory for domain class. it allow decoupling
+   
+    var myApp = angular.module("MyApp", []);
+        myApp.controller("BindingCode", BindingCode); // here we are registering it as CustomerObj
+        myApp.factory(`CustomerObj`, Customer);  // for mul instance
+        myApp.service(`UtilityObj`, Utility);  // for singal instance
+		
 	

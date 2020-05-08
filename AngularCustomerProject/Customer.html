@@ -5,21 +5,22 @@
     <title></title>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js" type="text/javascript"></script>-->
     <script src="Scripts/angular.js"></script>
+    <script src="Scripts/Customer.js"></script>
+    <script src="Scripts/Utility.js"></script>
+
     <script>
+
         // in javascript there is no concept of class . function is treated as class.
-        function Customer($scope, $rootScope) {
+        function BindingCode($scope, $rootScope, Factory, UtilityObj) {
             //debugger;
             //$rootScope.counter = (($rootScope.counter || 0) + 1);
-            var dt = new Date();
-            $scope.SalesDateTime = dt.toDateString();
-            $scope.CustomerName = "mrinal";
-            $scope.CustomerCode = "C001";
-            $scope.CustomerAmount = 100;
+            $scope.Customer = Factory.CreateCustomer(2, UtilityObj);
+            $scope.Utility = UtilityObj;
             $scope.CustomerAmountColor = `Red`;
 
             // custom watcher
-            $scope.$watch(`CustomerAmount`, function () {
-                if ($scope.CustomerAmount > 100) {
+            $scope.$watch(`Customer.CustomerAmount`, function () {
+                if ($scope.Customer.CustomerAmount > 100) {
                     $scope.CustomerAmountColor = `Green`;
                 }
                 else {
@@ -31,7 +32,7 @@
 
             // creating method inside class customer
             $scope.submit = function () {
-                if ($scope.CustomerName.length == 0) {
+                if ($scope.Utility.IsEmpty($scope.Customer.CustomerName)) {
                     alert('please enter customer name');
                     return 0;
                 }
@@ -62,44 +63,38 @@
         //ng-model
 
         var myApp = angular.module("MyApp", []);
-        myApp.controller("CustomerObj", Customer); // here we are registering it as CustomerObj
-
+        myApp.controller("BindingCode", BindingCode); // here we are registering it as CustomerObj
+        myApp.factory(`Factory`, Factory);
+        myApp.service(`UtilityObj`, Utility);
     </script>
 </head>
 <!-- Angular internally creates $rootscope for ng-app in dom. -->
 <body ng-app="MyApp">
 
-   <!-- {{counter}}-->
-
+    <!-- {{counter}}-->
     <!-- ng-controller="Customer" means var custObj = new Customer(); -->
     <!-- Angular internally creates $scope for ng-controller in dom. -->
-    <div id="CustScreen" ng-controller="CustomerObj">
+    <div id="CustScreen" ng-controller="BindingCode">
         <!-- it create new instance of Customer -->
-        Date and Time of sales :- {{::SalesDateTime}}<br />
-        Customer Name :- <input type="text" ng-model="CustomerName" id="CustomerName" /> <br />
-        Customer Code :- <input type="text" ng-model="CustomerCode" id="CustomerCode" /> <br />
-        Customer Amount :- <input type="text" style="background-color:{{CustomerAmountColor}}" ng-model="CustomerAmount" id="CustomerAmount" />
+        <!-- here we injected utility dependency and injected in binding code class -->
+        Welcome to Application {{::Utility.ApplicationName}}  <br />
+
+        Date and Time of sales :- {{::Customer.SalesDateTime}}<br />
+        Customer Name :- <input type="text" ng-model="Customer.CustomerName" id="CustomerName" /> <br />
+        Customer Code :- <input type="text" ng-model="Customer.CustomerCode" id="CustomerCode" /> <br />
+        Customer Amount :- <input type="text" style="background-color:{{CustomerAmountColor}}" ng-model="Customer.CustomerAmount" id="CustomerAmount" />
         <input type="button" value="Submit" ng-click="submit()" />
         <br />
-        {{::SalesDateTime}}<br />
+        {{::Customer.SalesDateTime}}<br />
 
-        {{CustomerName}}<br />
-        {{CustomerCode}}<br />
+        {{Customer.CustomerName}}<br />
+        {{Customer.CustomerCode}}<br />
+
+        {{Customer.CalculateDiscount()}}<br />
     </div>
 
-    <!-- another customer instance -->
-    <!--<div id="CustScreen" ng-controller="CustomerObj">
-        
-        Customer Name :- <input type="text" ng-model="CustomerName" id="CustomerName" /> <br />
-        Customer Code :- <input type="text" ng-model="CustomerCode" id="CustomerCode" />
+  
 
-       
-        <br />
-        {{CustomerName}}<br />
-        {{CustomerCode}}<br />
-    </div>-->
-
-     
 
 </body>
 </html>
