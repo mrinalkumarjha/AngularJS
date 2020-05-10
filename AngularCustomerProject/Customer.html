@@ -11,10 +11,11 @@
     <script>
 
         // in javascript there is no concept of class . function is treated as class.
-        function BindingCode($scope, $rootScope, Factory, UtilityObj) {
+        function BindingCode($scope, $rootScope, Factory, UtilityObj, $http) {
             //debugger;
             //$rootScope.counter = (($rootScope.counter || 0) + 1);
             $scope.Customer = Factory.CreateCustomer(2, UtilityObj);
+            $scope.Customers = [];
             $scope.Utility = UtilityObj;
             $scope.CustomerAmountColor = `Red`;
 
@@ -32,12 +33,19 @@
 
             // creating method inside class customer
             $scope.submit = function () {
+
                 if ($scope.Utility.IsEmpty($scope.Customer.CustomerName)) {
                     alert('please enter customer name');
                     return 0;
                 }
                 else {
-                    alert('submitting..');
+                    $http.post(`http://localhost:54524/api/Customer`, $scope.Customer).
+                        then(function (data) {
+                            //debugger;
+                            console.log(data.data);
+                            $scope.Customers = data.data;
+                            $scope.Customer = {}; // clear record
+                        });
                 }
             }
 
@@ -91,9 +99,25 @@
         {{Customer.CustomerCode}}<br />
 
         {{Customer.CalculateDiscount()}}<br />
+
+        List of record: <br />
+                        <table>
+                            <tr>
+                                <td>Name</td>
+                                <td>Code</td>
+                                <td>Amount</td>
+                                <td>Sales Date</td>
+                            </tr>
+                            <tr ng-repeat="cust in Customers">
+                                <td>{{::cust.CustomerName}}</td>
+                                <td>{{::cust.CustomerCode}}</td>
+                                <td>{{::cust.CustomerAmount}}</td>
+                                <td>{{::cust.SalesDateTime}}</td>
+                            </tr>
+                        </table>
     </div>
 
-  
+
 
 
 </body>

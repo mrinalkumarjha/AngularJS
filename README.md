@@ -196,4 +196,42 @@ https://angularjs.org/
         myApp.factory(`CustomerObj`, Customer);  // for mul instance
         myApp.service(`UtilityObj`, Utility);  // for singal instance
 		
+		
+# making http call from angularjs:		
+	when you make call from one domain to another domanin it will give you cors error . it is by design due to security concern. we can add some configuration in webapi to allow 
+	cross domain calls. add following inside system.webserver. cors can only be enabled in webapi not on client.
 	
+	<httpProtocol>
+			  <customHeaders>
+				  <add name="Access-Control-Allow-Origin" value="*"/>
+				  <add name="Access-Control-Allow-Headers" value="Content-Type"/>
+				  <add name="Access-Control-Allow-Methods" value="GET, POST, PUT, DELETE, OPTIONS"/>
+			  </customHeaders>
+		  </httpProtocol>
+		  
+		  and add following in global.asax
+		  
+		   /// <summary>
+        /// this method fires everytime when request comes to iis.
+        /// </summary>
+        protected void Application_BeginRequest()
+        {
+            // we added this code to not send any response to client in case of option request
+            if(Request.Headers.AllKeys.Contains("Origin") && Request.HttpMethod == "OPTIONS")
+            {
+                Response.Flush();
+            }
+        }
+		  
+		  
+	When http call happens in same domain it happens very straight forward. but when cross domain call things strart getting complicated. in cross domain call one more extra call
+	is added called pre-flight call.
+	sot first call by client is to server is to ask server which option you have allowed on server. so depending on what you have enabled on web config file. like get, post it 
+	sends the list to client.
+	After that call client makes main call like post , get .
+	So do remember is when you do cross domain call one extra call is pre-flight call with options to ask server for list of enabled operations.  to handle pre flight call
+	we need to add some code to application startup 
+	
+	
+	
+ 

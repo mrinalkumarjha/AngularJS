@@ -9,7 +9,7 @@
     }
 }
 
-function CustomerGold() {
+function CustomerGold(utility) {
     this.CustomerName = `mrinal`;
     this.CustomerCode = `C001`;
     this.CustomerAmount = 100;

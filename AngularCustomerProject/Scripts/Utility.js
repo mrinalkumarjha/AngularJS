@@ -8,10 +8,10 @@
 
     this.IsEmpty = function (value) {
         if (value.length == 0) {
-            return false;
+            return true;
         }
         else {
-            return true;
+            return false;
         }
     }
 
